@@ -5,6 +5,8 @@ let Customer = require("../models/Customer");
 router.route("/add").post((req,res) =>{
     const customer_code=req.body.customer_code;
     const  name=req.body. name;
+    const  email=req.body. email;
+    const  phone=Number(req.body. phone);
     const  age=Number(req.body. age);
     const gender=req.body.gender;
     const address=req.body.address;
@@ -13,6 +15,8 @@ router.route("/add").post((req,res) =>{
 
         customer_code,
         name,
+        email,
+        phone,
         age,
         gender,
         address
@@ -46,6 +50,8 @@ router.route("/update/:id").put(async(req,res)=>{
     const updateCustomer = {
         customer_code,
         name,
+        email,
+       // phone,
         age,
         gender,
         address
