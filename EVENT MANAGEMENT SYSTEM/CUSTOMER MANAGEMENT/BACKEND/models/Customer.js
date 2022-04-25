@@ -6,13 +6,19 @@ const customerSchema = new Schema({
     customer_code:{
         type:String,
         required:true,
-        unique:true,
+        //unique:true,
     },
 
-    name:{
+    first_name:{
         type : String,
         required:true
     },
+
+    last_name:{
+        type : String,
+        required:true
+    },
+
     email:{
         type : String,
         required:true
@@ -37,7 +43,9 @@ const customerSchema = new Schema({
 
 })
 
-//const Customer = mongoose.model("Customer",customerSchema);
+//const Customer = mongoose.model("customer",customerSchema);
+
+//module.exports = customer;
 
 module.exports = mongoose.model("Customer",customerSchema);
 

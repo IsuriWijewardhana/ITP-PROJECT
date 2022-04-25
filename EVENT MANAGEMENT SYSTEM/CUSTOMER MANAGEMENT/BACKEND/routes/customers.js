@@ -4,17 +4,19 @@ let Customer = require("../models/Customer");
 
 router.route("/add").post((req,res) =>{
     const customer_code=req.body.customer_code;
-    const  name=req.body. name;
-    const  email=req.body. email;
-    const  phone=Number(req.body. phone);
-    const  age=Number(req.body. age);
+    const first_name=req.body. first_name;
+    const last_name=req.body. last_name;
+    const email=req.body. email;
+    const phone=Number(req.body. phone);
+    const age=Number(req.body. age);
     const gender=req.body.gender;
     const address=req.body.address;
 
     const newCustomer = new Customer({
 
         customer_code,
-        name,
+        first_name,
+        last_name,
         email,
         phone,
         age,
@@ -45,13 +47,14 @@ router.route("/").get((req,res)=>{
 
 router.route("/update/:id").put(async(req,res)=>{
     let userId = req.params.id;
-    const {customer_code,name,age,gender,address} = req.body;
+    const {customer_code,first_name,last_name,email,phone,age,gender,address} = req.body;
 
     const updateCustomer = {
         customer_code,
-        name,
+        first_name,
+        last_name,
         email,
-       // phone,
+        phone,
         age,
         gender,
         address
@@ -90,7 +93,5 @@ router.route("/get/:id").get(async(req,res)=>{
         res.status(500).send({status:"Error with get user",error :err.message});
     })
 })
-
-
 
 module.exports = router;

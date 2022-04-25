@@ -7,7 +7,7 @@ const app=express();
 require("dotenv").config();
 
 
-const PORT=process.env.PORT || 8070;
+const PORT=process.env.PORT || 8090;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -16,8 +16,8 @@ const URL=process.env.MONGODB_URL;
 
 mongoose.connect(URL,{
    // useCreateIndex:true,
-   // useNewUrlParser:true,
-  //  useUnifriedTopologyL:true,
+    //useNewUrlParser:true,
+    //useUnifriedTopologyL:true,
     //useFindAndModify:false
     // this is new comment
 

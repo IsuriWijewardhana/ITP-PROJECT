@@ -4,17 +4,24 @@ import CounterClass from './components/CounterClass';
 import CounterFunction from './components/CounterFunction';
 import Header from './components/Header';
 import AddCustomer from './components/AddCustomer';
-//import {BrowserRouter as Router, Route} from 'react-router-dom';
+import  AllCustomers  from './components/AllCustomers';
+import {BrowserRouter, Route, Routes,Link} from 'react-router-dom';
 
 function App() {
   return (
-   // <Router>
     <div>
-      <Header/>
-      <AddCustomer/>
+      <BrowserRouter>
+        <Routes>
+          
+          
+          <Route path="/add" element={[<Header />, <AddCustomer />]} />
+          <Route path="/" element={[<Header/>,<AllCustomers />]} />
+        
+        </Routes>
+      </BrowserRouter>
     </div>
-   // </Router>
   );
 }
+
 
 export default App;
