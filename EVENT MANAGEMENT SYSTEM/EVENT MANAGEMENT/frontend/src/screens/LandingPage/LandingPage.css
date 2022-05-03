@@ -1,0 +1,50 @@
+.main {
+  min-height: 93vh;
+  display: flex;
+  align-items: center;
+  background-image: url(../../nzbk2.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.title {
+  font-size: 95px;
+  padding-top: 10px;
+}
+
+.subtitle {
+  font-size: 25px;
+  padding-top: 10px;
+}
+
+.intro-text {
+  width: 100%;
+  text-align: center;
+}
+
+.buttonContainer {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.landingbutton {
+  width: 200px;
+  height: 55px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .buttonContainer {
+    padding: 0 200px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .title {
+      font-size: 60px;
+    }
+    .landingbutton {
+      width: 200px;
+      height: 55px;
+    }
+  }
+}
