@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
-import events from "../../data/events";
+import axios from "axios";
 
 const MyEvents = () => {
+  const [events, setevents] = useState([]);
   const deleteHandler = (id) => {
     if (window.confirm("Are You Sure?")) {
     }
   };
+
+  const fetchEvents = async () => {
+    const { data } = await axios.get("/api/events");
+    setevents(data);
+  };
+  console.log(events);
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
   return (
     <MainScreen title="Welcome Back Navindu Praveen...">
       <Link to="createevent">
@@ -18,7 +30,7 @@ const MyEvents = () => {
       </Link>
 
       {events.map((event) => (
-        <Accordion>
+        <Accordion key={event._id}>
           <Card style={{ margin: 10 }}>
             <Card.Header style={{ display: "flex" }}>
               <span
