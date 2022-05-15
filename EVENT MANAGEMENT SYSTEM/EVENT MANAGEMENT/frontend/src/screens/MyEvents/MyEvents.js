@@ -67,9 +67,6 @@ const MyEvents = () => {
                 <blockquote className="blockquote mb-0">
                   <p>{event.content}</p>
                   <p>{event.availableP}</p>
-                  <p>{event.G_Pprice}</p>
-                  <p>{event.S_Pprice}</p>
-                  <p>{event.P_Pprice}</p>
 
                   <footer className="blockquote-footer">
                     Created On - date
