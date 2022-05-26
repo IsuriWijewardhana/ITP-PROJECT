@@ -1,84 +1,80 @@
-const router = require("express").Router();
-let employee = require("../models/employee");
+const router = require('express').Router();
+let Employee  = require('../models/Employee.model');
 
-router.route("/add").post((req,res)=>{
+router.route('/').get((req, res) => {
+    Employee.find()
+        .then(Employee => res.json(Employee))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 
-    const name = req.body.name;
-    const age = Number(req.body.age);
-    const nic= Number(req.body.nic);
-    const telephone = Number(req.body.telephone);
-    const emptype = req.body.emptype;
+//Add Function
 
-    const newemployee = new employee({
+router.route('/add').post((req, res) => {
 
-        name,
-        age,
-        nic,
-        telephone,
-        emptype
-    })
-
-    newemployee.save().then(()=>{
-        res.json("ëmployee added")
-    }).catch((err)=>{
-        console.log(err);
-    })
-
+    const EmployeeID = req.body.EmployeeID;
+    const EmployeeName = req.body.EmployeeName;
+    const Address =req.body.Address;
+    const Email = req.body.Email;
+    const Telephone = req.body.Telephone;
+    const Type = req.body.Type;
+    const Discription = req.body.Discription;
    
-})
+
+    const newEmployee  = new Employee({
+        EmployeeID,
+        EmployeeName,
+        Address,
+        Email,
+        Telephone,
+        Type,
+        Discription
+       
+    });
+
+    newEmployee.save()
+        .then(() => res.json('Employee  added!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+// Get Data 
+router.route('/:id').get((req, res) => {
+    Employee.findById(req.params.id)
+        .then(Employee => res.json(Employee))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+//Delete Data
+
+router.route('/:id').delete((req, res) => {
+    Employee.findByIdAndDelete(req.params.id)
+        .then(() => res.json('Employee deleted.'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+// Update data
+router.route('/update/:id').post((req, res) => {
+    Employee.findById(req.params.id)
+        .then(Employee => {
+            Employee.EmployeeID = req.body.EmployeeID;
+            Employee.EmployeeName = req.body.EmployeeName;
+            Employee.Address = req.body.Address;
+            Employee.Telephone = req.body.Telephone;
+            Employee.Email = req.body.Email;
+            Employee.Type = req.body.Type;
+            Employee.Discription = req.body.Discription;
+            
+          
+
+            Employee.save()
+                .then(() => res.json('Employee updated!'))
+                .catch(err => res.status(400).json('Error: ' + err));
+        })
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+module.exports = router;
 
 
-router.route("/").get((req,res)=>{
-    employee.find().then((employee)=>{
-        res.json(employee)
-    }).catch((err)=>{
-        console.log(err)
-    })
-})
 
 
-router.route("/update/:id").put(async(req,res)=>{
-    let userId = req.params.id;
-    const {name,age,nic,telephone,emptype} = req.body;
 
-    const updateemployee = {
-        name,
-        age,
-        nic,
-        telephone,
-        emptype
-    }
-
-    const update = await employee.findByIdAndUpdate(userId, updateemployee).then(()=>{
-        res.status(200).send({status:"User Update"})
-
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).send({status: "Error with updating data", error: err.message});
-    })
-})
-
-
-router.route("/delete/:id").delete(async (req,res) => {
-    let userId = req.params.id;
-
-    await employee.findByIdAndDelete(userId).then(()=>{
-        res.status(200).send({status: "User Deleted"});
-    }).catch((err) =>{
-        console.log(err.message);
-        res.status(500).send({status: "Error with delete user", error: err.message});
-    })
-})
-
-router.route("/get/:id").get(async (req,res)=>{
-    let userId = req.params.id;
-    await employee.findById(userId).then((employee)=>{
-        res.status(200).send({status: "User fetched", employee})
-    }).catch(()=>{
-        console.log(err.message);
-        res.status(500).send({status: "Erroe with get user", error:err.message})
-    })
-})
-
-
-module.exports=router;
