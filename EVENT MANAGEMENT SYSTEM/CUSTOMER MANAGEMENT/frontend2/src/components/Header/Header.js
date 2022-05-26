@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
               <Navbar.Brand >
                 <Link to="/">Rusty Deco</Link>
                 
-                
+              
                 </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">

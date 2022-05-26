@@ -1,0 +1,35 @@
+.main {
+    min-height: 93vh;
+    display: flex;
+    align-items: center;
+    background-image: url("../background1.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .title {
+    font-size: 95px;
+  }
+  .subtitle {
+    font-size: 25px;
+    padding-top: 10px;
+  }
+  .intro-text {
+    width: 100%;
+    text-align: center;
+  }
+  .photo {
+    height: 400px;
+    width: 800px; 
+    margin-bottom:25px;
+    
+}
+.buttonContainer{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.homebutton{
+  width:200px;
+  height:"55px";
+}

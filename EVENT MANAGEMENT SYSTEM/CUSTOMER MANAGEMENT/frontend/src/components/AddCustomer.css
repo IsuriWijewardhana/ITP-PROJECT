@@ -1,0 +1,8 @@
+.main1{
+    min-height: 93vh;
+    display: flex;
+    align-items: center;
+    background-image: url("../backgroundadd.jpg");
+    background-position: center;
+    background-size: cover;
+}

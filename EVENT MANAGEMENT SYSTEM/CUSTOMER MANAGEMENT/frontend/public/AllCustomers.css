@@ -54,7 +54,7 @@ h3{
 
 .fl-table thead th:nth-child(odd) {
     color: #ffffff;
-    background: #324960;
+    background: #e9b9da;
 }
 
 .fl-table tr:nth-child(even) {
@@ -85,6 +85,32 @@ h3{
     touch-action: manipulation;
     vertical-align: middle;
   }
+
+  .button1 {
+    background: #025027;
+    border: 1px solid #034420;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+
   
   .button:hover,
   .button:active {
@@ -110,7 +136,7 @@ h3{
         display: block;
         text-align: right;
         font-size: 11px;
-        color: white;
+        color: rgb(186, 182, 182);
         padding: 0 0 10px;
     }
     .fl-table thead, .fl-table tbody, .fl-table thead th {

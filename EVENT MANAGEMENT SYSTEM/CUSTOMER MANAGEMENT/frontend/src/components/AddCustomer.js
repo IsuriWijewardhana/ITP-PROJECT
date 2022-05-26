@@ -1,5 +1,9 @@
 import React,{useState} from "react"
 import axios from "axios";
+import "./AddCustomer.css";
+import { Container } from "react-bootstrap";
+
+
 
 export default function AddCustomer(){
 
@@ -43,15 +47,17 @@ export default function AddCustomer(){
 
     return(
     
-        <div class="container">
+        <div class="main1">
+            <Container>
             <form>
                 <div className="form-group">
                 
+               
+                <h1><font color="red"><center>..ADD CUSTOMER..</center></font></h1>
+                
 
-                <h1><font color="red">Add Customer</font></h1>
-
-                    <label for="customer_code"><strong><font color="green">Customer_code</font></strong></label>
-                    <input type="text" className="form-control" id="customer_code" placeholder="Enter code" 
+                    <label for="customer_code"><strong><font color="blue">Customer_code</font></strong></label>
+                    <input type="text"  className="form-control" id="customer_code" placeholder="Enter code" required
                     onChange={(e)=>{
 
                       setCustomer_code(e.target.value);
@@ -62,8 +68,8 @@ export default function AddCustomer(){
 
                 <div className="form-group">
 
-                        <label for="first_name"><strong><font color="green">First_name</font></strong></label>
-                        <input type="text" className="form-control" id="first_name" placeholder="fname"
+                        <label for="first_name"><strong><font color="blue">First_name</font></strong></label>
+                        <input type="text" required className="form-control" id="first_name" placeholder="fname" 
                         onChange={(e)=>{
 
                             setFirst_name(e.target.value);
@@ -74,8 +80,8 @@ export default function AddCustomer(){
 
                 <div className="form-group">
 
-                        <label for="last_name"><strong><font color="green">Last_name</font></strong></label>
-                        <input type="text" className="form-control" id="last_name" placeholder="lname"
+                        <label for="last_name"><strong><font color="blue">Last_name</font></strong></label>
+                        <input type="text" required className="form-control" id="last_name" placeholder="lname" 
                         onChange={(e)=>{
 
                             setLast_name(e.target.value);
@@ -86,8 +92,8 @@ export default function AddCustomer(){
 
                 <div className="form-group">
 
-                        <label for="email"><strong><font color="green">Email</font></strong></label>
-                        <input type="text" className="form-control" id="email"  placeholder="Enter Your Email"
+                        <label for="email"><strong><font color="blue">Email</font></strong></label>
+                        <input type="text" required className="form-control" id="email"  placeholder="Enter Your Email" maxlength = "20"
                         onChange={(e)=>{
 
                             setEmail(e.target.value);
@@ -97,8 +103,8 @@ export default function AddCustomer(){
                 </div>
                         <div className="form-group">
 
-                        <label for="phone"><strong><font color="green">Phone</font></strong></label>
-                        <input type="text" className="form-control" id="phone" placeholder="Enter Number"
+                        <label for="phone"><strong><font color="blue">Phone</font></strong></label>
+                        <input type="text" required className="form-control" id="phone" placeholder="Enter Number" 
                         onChange={(e)=>{
 
                             setPhone(e.target.value);
@@ -110,8 +116,8 @@ export default function AddCustomer(){
                 
                 <div className="form-group">
 
-                    <label for="age"><strong><font color="green">Age</font></strong></label>
-                    <input type="text" className="form-control" id="age" placeholder="Enter Age"
+                    <label for="age"><strong><font color="blue">Age</font></strong></label>
+                    <input type="text" required className="form-control" id="age" placeholder="Enter Age" 
                     onChange={(e)=>{
 
                         setAge(e.target.value);
@@ -122,8 +128,8 @@ export default function AddCustomer(){
 
                 <div className="form-group">
 
-                <label for="gender"><strong><font color="green">Gender</font></strong></label>
-                    <input type="text" className="form-control" id="gender" 
+                <label for="gender"><strong><font color="blue">Gender</font></strong></label>
+                    <input type="text" required className="form-control" id="gender" placeholder="gender"
                     onChange={(e)=>{
 
                         setGender(e.target.value);
@@ -136,8 +142,8 @@ export default function AddCustomer(){
 
                 <div className="form-group">
 
-                <label for="address"><strong><font color="green">Address</font></strong></label>
-                    <input type="text" className="form-control" id="address" placeholder="Enter Your Address"
+                <label for="address"><strong><font color="blue">Address</font></strong></label>
+                    <input type="text" required className="form-control" id="address" placeholder="Enter Your Address" maxlength = "10"
                     onChange={(e)=>{
 
                         setAddress(e.target.value);
@@ -148,8 +154,9 @@ export default function AddCustomer(){
 
 
                     
-                    <button type="submit" className="btn btn-primary" onClick={sendData} >Submit</button>
+                    <button type="submit" className="btn btn-danger" onClick={sendData} >Submit</button>
             </form>
+            </Container>
         </div>
     )
 
