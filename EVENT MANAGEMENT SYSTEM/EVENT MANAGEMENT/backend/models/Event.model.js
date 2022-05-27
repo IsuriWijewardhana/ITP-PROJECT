@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
 //Databass Schema
-
 const EventSchema = new Schema(
   {
     EventID: { type: Number, required: true },

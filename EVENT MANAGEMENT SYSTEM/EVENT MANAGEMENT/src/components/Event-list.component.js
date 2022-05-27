@@ -5,10 +5,11 @@ import { Button } from "react-bootstrap";
 
 const Event = (props) => (
   <tr>
-    <td> {props.Event.EventID} </td> <td> {props.Event.EventName} </td>{" "}
-    <td> {props.Event.Category} </td> <td> {props.Event.Content} </td>{" "}
-    <td> {props.Event.Packages} </td> <td> {props.Event.G_Pprice} </td>{" "}
-    <td> {props.Event.S_Pprice} </td> <td> {props.Event.P_Pprice} </td>{" "}
+    <td> {props.Event.EventID} </td>
+    <td> {props.Event.EventName} </td> <td> {props.Event.Category} </td>
+    <td> {props.Event.Content} </td> <td> {props.Event.Packages} </td>
+    <td> {props.Event.G_Pprice} </td> <td> {props.Event.S_Pprice} </td>
+    <td> {props.Event.P_Pprice} </td>{" "}
     <td>
       <Link to={"/edit/" + props.Event._id}> Edit </Link> |{" "}
       <a

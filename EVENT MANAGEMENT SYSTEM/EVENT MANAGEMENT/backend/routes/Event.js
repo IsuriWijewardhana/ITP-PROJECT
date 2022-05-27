@@ -7,7 +7,7 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-//Add Function
+//new event
 router.route("/add").post((req, res) => {
   const EventID = req.body.EventID;
   const EventName = req.body.EventName;
@@ -50,7 +50,7 @@ router.route("/:id").delete((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-// Update data
+// Update Event data
 router.route("/update/:id").post((req, res) => {
   Event.findById(req.params.id)
     .then((Event) => {
