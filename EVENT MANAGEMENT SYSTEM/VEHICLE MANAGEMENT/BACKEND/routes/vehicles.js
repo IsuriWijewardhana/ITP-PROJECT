@@ -34,8 +34,8 @@ router.route("/").get((req, res) => {
     });
 });
 
-router.route("/update/:id").put(async (req, res) => {
-  let userId = req.params.id;
+router.route("/update/:id").patch(async (req, res) => {
+  /*let userId = req.params.id;
   const { model, number, year, colour } = req.body;
 
   const updateVehicle = {
@@ -53,7 +53,28 @@ router.route("/update/:id").put(async (req, res) => {
       res
         .status(500)
         .send({ status: "Error with updating data", error: err.message });
+    }); */
+
+  const user = await Vehicle.findById(req.params.id);
+  if (user) {
+    user.model = req.body.model || user.model;
+    user.number = req.body.number || user.number;
+    user.year = req.body.year || user.year;
+    user.colour = req.body.colour || user.colour;
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      model: updatedUser.model,
+      number: updatedUser.number,
+      year: updatedUser.year,
+      colour: updatedUser.colour,
     });
+  } else {
+    res.status(404);
+    throw new Error("Vehicle Not found");
+  }
 });
 
 router.route("/delete/:id").delete(async (req, res) => {
@@ -71,7 +92,7 @@ router.route("/delete/:id").delete(async (req, res) => {
 });
 
 router.route("/get/:id").get(async (req, res) => {
-  let userId = req.params.id;
+  /* let userId = req.params.id;
   const user = await Vehicle.findById(userId)
     .then((vehicle) => {
       res.status(200).send({ status: "User fetched", vehicle });
@@ -81,7 +102,15 @@ router.route("/get/:id").get(async (req, res) => {
       res
         .status(500)
         .send({ status: "Error with get Vehicle", error: err.message });
-    });
+    }); */
+
+  const user = await Vehicle.findById(req.params.id);
+
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404).json({ message: "Vehicle not found" });
+  }
 });
 
 module.exports = router;

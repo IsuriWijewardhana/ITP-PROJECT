@@ -1,0 +1,8 @@
+.main {
+  min-height: 93vh;
+  display: flex;
+  align-items: center;
+  background-image: url("../homebgg.webp");
+  background-position: center;
+  background-size: cover;
+}

@@ -1,20 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "./AddVehicle.css";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-export default function AddVehicle() {
+export default function EditVehicle() {
   const [model, setName] = useState("");
   const [number, setNumber] = useState("");
   const [year, setYear] = useState("");
   const [colour, setColour] = useState("");
 
+  const { id } = useParams();
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   let navigate = useNavigate();
 
-  function SendData(e) {
+  function getUsers() {
+    let mounted = true;
+
+    fetch(`http://localhost:8065/vehicle/get/${id}`)
+      .then((res) => res.json())
+
+      .then((result) => {
+        if (mounted) {
+          setName(result.model);
+          setNumber(result.number);
+          setYear(result.year);
+          setColour(result.colour);
+        }
+        console.log(result);
+      });
+    return () => (mounted = false);
+  }
+
+  function sendData(e) {
     e.preventDefault();
 
-    const newVehicle = {
+    const EditVehicle = {
       model,
       number,
       year,
@@ -22,41 +45,36 @@ export default function AddVehicle() {
     };
 
     axios
-      .post("http://localhost:8065/vehicle/add", newVehicle)
+      .patch(`http://localhost:8065/vehicle/update/${id}`, EditVehicle)
       .then(() => {
-        alert("Vehicle Added");
+        alert("Update Successfully");
+
         navigate("/vehicles");
-        setName("");
-        setNumber("");
-        setYear("");
-        setColour("");
+        //window.reload();
+
+        window.history.replaceState({}, "/");
+
+        console.log(EditVehicle);
       })
+
       .catch((err) => {
-        alert("Fill required feilds");
+        alert(err);
       });
   }
 
-  if (
-    model === undefined ||
-    number === undefined ||
-    year === undefined ||
-    colour === undefined
-  )
-    alert("Please fill out the required fields!");
-
   return (
     <div className="container">
-      <form onSubmit={SendData}>
+      <form>
         <div class="form-group">
           <h1>
-            <font color="green">Add Vehicle</font>
+            <font color="green">Update Vehicle</font>
           </h1>
           <label for="model">Vehicle Model</label>
           <input
             type="text"
             class="form-control"
             id="model"
-            required
+            value={model}
             placeholder="Enter Vehicle Model"
             onChange={(e) => {
               setName(e.target.value);
@@ -69,9 +87,9 @@ export default function AddVehicle() {
           <input
             type="text"
             class="form-control"
-            id="number"
+            id="text"
             maxLength="6"
-            required
+            value={number}
             placeholder="Enter Vehicle Number"
             onChange={(e) => {
               setNumber(e.target.value);
@@ -84,9 +102,9 @@ export default function AddVehicle() {
           <input
             type="text"
             class="form-control"
-            id="year"
-            required
+            id="number"
             maxLength="4"
+            value={year}
             placeholder="Enter Vehicle Year"
             onChange={(e) => {
               setYear(e.target.value);
@@ -100,7 +118,7 @@ export default function AddVehicle() {
             type="text"
             class="form-control"
             id="colour"
-            required
+            value={colour}
             placeholder="Enter Vehicle Colour"
             onChange={(e) => {
               setColour(e.target.value);
@@ -108,8 +126,8 @@ export default function AddVehicle() {
           />
         </div>
 
-        <button type="submit" class="btn btn-primary">
-          Submit
+        <button type="submit" class="btn btn-primary" onClick={sendData}>
+          Update
         </button>
       </form>
     </div>

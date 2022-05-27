@@ -21,14 +21,20 @@ function Header() {
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li className="nav-item active">
             <Link to="/" className="nav-link">
-              All Vehicles
+              Home
+            </Link>
+          </li>
+
+          <li class="nav-item active">
+            <Link to="/vehicles" className="nav-link">
+              <font color="blue">All Vehicles</font>
             </Link>
           </li>
           <li class="nav-item">
             <Link to="/add" className="nav-link">
-              Add Vehicle
+              <font color="blue"> Add Vehicle</font>
             </Link>
           </li>
           <li class="nav-item">
