@@ -188,7 +188,7 @@ export default class CreateEvent extends Component {
                       onChange={this.onChangeContent}
                     />
                   </div>
-                  <div className="form-group">
+                  <div className="container">
                     <label> Event Available Packages: </label>
                     <input
                       type="text"
